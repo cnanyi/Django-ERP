@@ -27,7 +27,13 @@ def getuser():
     return getattr(_thread_local,'user',None)
 
 
-class RequestUser(object):
+class RequestUser:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request, *args, **kwargs):
+        return self.get_response(request)
+
 
     def process_request(self,request):
         django_user = getattr(request,'user',None)

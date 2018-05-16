@@ -58,7 +58,7 @@ class ValueListItem(models.Model):
         self.group_code = self.group.code
         super(ValueListItem,self).save(force_insert,force_update,using,update_fields)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s-%s" % (self.code,self.name)
 
     class Meta:
@@ -151,7 +151,7 @@ class BankAccount(generic.BO):
     partner = models.ForeignKey(Partner,on_delete=models.DO_NOTHING, verbose_name=_("partner"),blank=True,null=True)
     org = models.ForeignKey(Organization,on_delete=models.DO_NOTHING, verbose_name=_("organization"),blank=True,null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         name = ''
         if self.org:
             name = self.org.name
@@ -211,7 +211,7 @@ class Warehouse(models.Model):
     users = models.ManyToManyField(User,verbose_name=_("related users"),blank=True)
     org = models.ForeignKey(Organization,on_delete=models.DO_NOTHING, verbose_name=_("organization"),blank=True,null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s' % self.name
 
     class Meta:
@@ -228,7 +228,7 @@ class Measure(models.Model):
     name = models.CharField(_("name"),max_length=const.DB_CHAR_NAME_20)
     status = models.BooleanField(_("in use"),default=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s' % self.name
 
     class Meta:
@@ -246,7 +246,7 @@ class Trade(models.Model):
     memo = models.CharField(_("memo"),max_length=const.DB_CHAR_NAME_120,null=True,blank=True)
     parent = models.ForeignKey('self',on_delete=models.DO_NOTHING, verbose_name=_("parent"),null=True,blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s' % self.name
 
     class Meta:
@@ -265,7 +265,7 @@ class Brand(models.Model):
     pinyin = models.CharField(_("pinyin"),max_length=const.DB_CHAR_NAME_120,blank=True,null=True)
     weight = models.IntegerField(_("weight"),blank=True,null=True,default=99)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s' % self.name
 
     class Meta:
@@ -284,7 +284,7 @@ class Category(models.Model):
     name = models.CharField(_("name"),max_length=const.DB_CHAR_NAME_120)
     path = models.CharField(_("path"),max_length=const.DB_CHAR_NAME_200,null=True,blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s' % self.name
 
     class Meta:
@@ -301,7 +301,7 @@ class TechnicalParameterName(models.Model):
     name = models.CharField(_("name"),max_length=const.DB_CHAR_NAME_40)
     status = models.BooleanField(_("in use"),default=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s' % self.name
 
     class Meta:
@@ -317,7 +317,7 @@ class TechnicalParameterValue(models.Model):
     value = models.CharField(_("value"),max_length=const.DB_CHAR_NAME_80)
     description = models.CharField(_("description"),max_length=const.DB_CHAR_NAME_80,null=True,blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s' % self.value
 
     class Meta:
@@ -353,7 +353,7 @@ class Material(generic.BO):
     sale_price = models.DecimalField(_("sale price"),max_digits=14,decimal_places=4,blank=True,null=True)
     org = models.ForeignKey(Organization,on_delete=models.DO_NOTHING, verbose_name=_("organization"),blank=True,null=True)
 
-    def __unicode__(self):
+    def __str__(self):
 
         return "%s %s" % (self.code,self.name)
 
@@ -372,7 +372,7 @@ class MaterialParam(models.Model):
     param_name = models.ForeignKey(TechnicalParameterName,on_delete=models.DO_NOTHING, blank=Trade,null=True)
     creation = models.DateField(auto_now_add=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s' % self.param_value
 
     class Meta:
@@ -394,7 +394,7 @@ class ExtraParam(models.Model):
     data_type = models.CharField(_("data type"),default='CHAR',choices=DATA_TYPE,max_length=const.DB_CHAR_CODE_6)
     data_source = models.CharField(_("data source"),blank=True,null=True,max_length=const.DB_CHAR_NAME_40)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.name
 
     class Meta:
@@ -495,7 +495,7 @@ class Employee(generic.BO):
             cnt = datetime.date.today().year-self.workday.year
             return cnt
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s %s'%(self.code,self.name)
 
     age.short_description = u'年龄'
