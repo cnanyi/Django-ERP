@@ -3,6 +3,13 @@ Django-ERP是一款基于Django开发的ERP管理软件，包含常用的销售�
 
 Forked from <a href="https://github.com/zhuinfo/Django-ERP">zhuinfo Django-ERP</a> 感谢他的付出。
 
+# migrate to python3.6 and django 2.0.4
+> 升级到python3.6.5 + django2.0.4，做了部分代码更改，如下
+* try .. except: Exception , e 改为  Exception as e
+* print s  改为  print(s)
+* def __unicode__  改为  def __str__
+* middleware 重新排序，并增加 __init__ , __call__方法
+
 # 安装指南
 
 > 我的开发、测试环境是Python2.7的，所以这个文档大多数情况我默认会使用这个条件，有个别测试不到位的可能还需要慢慢完善。
