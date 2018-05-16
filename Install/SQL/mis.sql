@@ -14,7 +14,6 @@ MySQL - 5.1.55-community : Database - mis
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`mis` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `mis`;
 
 /*Table structure for table `auth_group` */
 

@@ -47,16 +47,18 @@ INSTALLED_APPS = (
     'sale',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
+    # 'midware.cuser.RequestUser',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'midware.cuser.RequestUser',
+
+
 )
 
 ROOT_URLCONF = 'mis.urls'
@@ -89,7 +91,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
-        'NAME': 'mis',
+        'NAME': 'django_erp',
         'USER': 'root',
         'PASSWORD': 'root',
     }

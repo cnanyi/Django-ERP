@@ -8,7 +8,8 @@ from django.conf import settings
 from django.contrib.admin import ModelAdmin, actions
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.core.exceptions import ImproperlyConfigured, PermissionDenied
-from django.core.urlresolvers import NoReverseMatch, reverse
+from django.urls.exceptions import NoReverseMatch
+from django.urls import reverse
 from django.db.models.base import ModelBase
 from django.http import Http404, HttpResponseRedirect
 from django.template.engine import Engine
@@ -90,7 +91,7 @@ class RequestUser(object):
             try:
                 todolist = self.get_my_task(request)
                 context.update(dict(todolist = todolist))
-            except Exception,e:
+            except Exception as e:
                 pass
             # print context
             view_kwargs['extra_context'] = context
